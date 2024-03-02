@@ -21,3 +21,20 @@ function playRound(computerSelection, playerSelection){
     return 1;
   }
 }
+
+function playGame(){
+  let result = 0;
+  for(let i = 0; i < 5; i++){
+    const userInput = prompt("Type in your choice (Rock, Paper or Scissors)", "Rock");
+    const parsedInput = userInput[0].toUpperCase() + userInput.slice(1).toLowerCase();
+    
+    result += playRound(getComputerChoice(), parsedInput)
+  }
+  if(result > 0){
+    console.log("You won the game!")
+  } else if(result < 0){
+    console.log("You lost the game :(")
+  } else {
+    console.log("The game resulted in a tie")
+  }
+}
