@@ -6,14 +6,13 @@ function getComputerChoice(){
 }
 
 function playRound(computerSelection, playerSelection){
-  const lowerCasedSelection = playerSelection.toLowerCase();
-  if(computerSelection === lowerCasedSelection){
+  if(computerSelection === playerSelection){
     console.log("It's a tie!");
     return 0; 
   } else if(
-    (computerSelection === "Rock" && lowerCasedSelection === "Scissors") ||
-    (computerSelection === "Paper" && lowerCasedSelection === "Rock") ||
-    (computerSelection === "Scissors" && lowerCasedSelection === "Paper")
+    (computerSelection === "Rock" && playerSelection === "Scissors") ||
+    (computerSelection === "Paper" && playerSelection === "Rock") ||
+    (computerSelection === "Scissors" && playerSelection === "Paper")
   ){
     console.log(`You lose! ${toCapitalise(computerSelection)} beats ${toCapitalise(playerSelection)}`);
     return -1;
@@ -41,10 +40,11 @@ function playGame(){
 }
 
 function validateInput(toValidate){
-  while(toValidate.toLowerCase() != "rock" && 
-        toValidate.toLowerCase() != "paper" && 
-        toValidate.toLowerCase() != "scissors"){
-    toValidate = prompt("Invalid data, please try again", "Rock");
+  toValidate = toValidate.toLowerCase();
+  while(toValidate != "rock" && 
+        toValidate != "paper" && 
+        toValidate != "scissors"){
+    toValidate = prompt("Invalid data, please try again", "Rock").toLowerCase();
   }
   return toValidate;
 }
