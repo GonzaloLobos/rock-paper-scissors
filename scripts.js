@@ -1,3 +1,5 @@
+const buttons = document.querySelectorAll('button');
+
 const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice(){
@@ -22,32 +24,26 @@ function playRound(computerSelection, playerSelection){
   }
 }
 
-function playGame(){
-  let result = 0;
-  for(let i = 0; i < 5; i++){
-    const userInput = prompt("Type in your choice (Rock, Paper or Scissors)", "Rock");
-    const validData = validateInput(userInput);
+buttons.forEach((btn) => btn.addEventListener('click', function() {
+  playRound(getComputerChoice(), btn.textContent)
+}));
 
-    result += playRound(getComputerChoice(), validData)
-  }
-  if(result > 0){
-    alert("You won the game!")
-  } else if(result < 0){
-    alert("You lost the game :(")
-  } else {
-    alert("The game resulted in a tie")
-  }
-}
+// function playGame(){
+//   let result = 0;
+//   for(let i = 0; i < 5; i++){
+//     const userInput = prompt("Type in your choice (Rock, Paper or Scissors)", "Rock");
+//     const validData = validateInput(userInput);
 
-function validateInput(toValidate){
-  toValidate = toValidate.toLowerCase();
-  while(toValidate != "rock" && 
-        toValidate != "paper" && 
-        toValidate != "scissors"){
-    toValidate = prompt("Invalid data, please try again", "Rock").toLowerCase();
-  }
-  return toValidate;
-}
+//     result += playRound(getComputerChoice(), validData)
+//   }
+//   if(result > 0){
+//     alert("You won the game!")
+//   } else if(result < 0){
+//     alert("You lost the game :(")
+//   } else {
+//     alert("The game resulted in a tie")
+//   }
+// }
 
 function toCapitalise(str){
   const capitalisedStr = str[0].toUpperCase() + str.slice(1).toLowerCase()
