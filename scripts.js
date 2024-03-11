@@ -1,26 +1,26 @@
 const buttons = document.querySelectorAll('button');
+const roundResult = document.querySelector('.round-result');
 
 const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice(){
   const randIdx = Math.floor(Math.random() * 3);
-  console.log(choices[randIdx])
   return choices[randIdx]
 }
 
 function playRound(computerSelection, playerSelection){
   if(computerSelection === playerSelection){
-    console.log("It's a tie!");
+    roundResult.textContent = "It's a tie!";
     return 0; 
   } else if(
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection === "paper")
   ){
-    console.log(`You lose! ${toCapitalise(computerSelection)} beats ${toCapitalise(playerSelection)}`);
+    roundResult.textContent = `You lose! ${toCapitalise(computerSelection)} beats ${toCapitalise(playerSelection)}`
     return -1;
   } else {
-    console.log(`You win! ${toCapitalise(playerSelection)} beats ${toCapitalise(computerSelection)}`);
+    roundResult.textContent = `You win! ${toCapitalise(playerSelection)} beats ${toCapitalise(computerSelection)}`
     return 1;
   }
 }
