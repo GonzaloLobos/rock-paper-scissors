@@ -4,6 +4,7 @@ const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice(){
   const randIdx = Math.floor(Math.random() * 3);
+  console.log(choices[randIdx])
   return choices[randIdx]
 }
 
@@ -12,9 +13,9 @@ function playRound(computerSelection, playerSelection){
     console.log("It's a tie!");
     return 0; 
   } else if(
-    (computerSelection === "Rock" && playerSelection === "Scissors") ||
-    (computerSelection === "Paper" && playerSelection === "Rock") ||
-    (computerSelection === "Scissors" && playerSelection === "Paper")
+    (computerSelection === "rock" && playerSelection === "scissors") ||
+    (computerSelection === "paper" && playerSelection === "rock") ||
+    (computerSelection === "scissors" && playerSelection === "paper")
   ){
     console.log(`You lose! ${toCapitalise(computerSelection)} beats ${toCapitalise(playerSelection)}`);
     return -1;
@@ -25,7 +26,8 @@ function playRound(computerSelection, playerSelection){
 }
 
 buttons.forEach((btn) => btn.addEventListener('click', function() {
-  playRound(getComputerChoice(), btn.textContent)
+  const parsedSelection = btn.textContent.toLowerCase();
+  playRound(getComputerChoice(),parsedSelection)
 }));
 
 // function playGame(){
